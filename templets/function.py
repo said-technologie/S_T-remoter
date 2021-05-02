@@ -27,3 +27,4 @@ class channel:
     def youtube_T_L():
         os.system("xdg-open https://www.youtube.com/channel/UCfD0KLgqBqvUzJsTGwqG1vQ")
     def youtube_W_M():
+        print("hello")
