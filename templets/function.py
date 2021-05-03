@@ -12,7 +12,7 @@ none = "\033[38m"
 #importing the modules
 
 import os , sys , time
-from webbrowser import *
+from webbrowser import open
 #def functions
 
 def help_menu():
@@ -27,4 +27,12 @@ class channel:
     def youtube_T_L():
         os.system("xdg-open https://www.youtube.com/channel/UCfD0KLgqBqvUzJsTGwqG1vQ")
     def youtube_W_M():
-        print("hello")
+        webbrowser.open("https://www.youtube.com/channel/UCfD0KLgqBqvUzJsTGwqG1vQ")
+    def github_T_L():
+        os.system("xdg-open https://github.com/said-technologie")
+    def github_W_M():
+        webbrowser.open("https://github.com/said-technologie")
+    def facebook_T_L():
+        os.system("xdg-open https://www.facebook.com/Said_technologie-111339843954624")
+    def facebook_W_M():
+        webbrowser.open("https://www.facebook.com/Said_technologie-111339843954624")

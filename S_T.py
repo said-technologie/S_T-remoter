@@ -39,6 +39,36 @@ def S_T():
             os.system("clear")
         elif op_intarface == "help":
             help_menu()
+        #cheking teh cre_channel options Github
+        elif op_intarface == "cre_channel -c Github -o Termux":
+            channel.github_T_L()
+        elif op_intarface == "cre_channel -c Github -o Linux":
+            channel.github_T_L()
+        elif op_intarface == "cre_channel -c Github -o Windows":
+            channel.github_W_M()
+        elif op_intarface == "cre_channel -c Github -o Mac":
+            channel.github_W_M()
+        #cheking teh cre_channel options Youtube
+        elif op_intarface == "cre_channel -c Youtube -o Termux":
+            channel.youtube_T_L()
+        elif op_intarface == "cre_channel -c Youtube -o Linux":
+            channel.youtube_T_L()
+        elif op_intarface == "cre_channel -c Youtube -o Windows":
+            channel.youtube_W_M()
+        elif op_intarface == "cre_channel -c Youtube -o Mac":
+            channel.youtube_W_M()
+        #cheking teh cre_channel options Facebook
+        elif op_intarface == "cre_channel -c Facebook -o Termux":
+            channel.facebook_T_L()
+        elif op_intarface == "cre_channel -c Facebook -o Linux":
+            channel.facebook_T_L()
+        elif op_intarface == "cre_channel -c Facebook -o Windows":
+            channel.facebook_W_M()
+        elif op_intarface == "cre_channel -c Facebook -o Mac":
+            channel.facebook_W_M()
+        #cheking if the len of intup is 0
+        elif len(op_intarface) == 0:
+            return op_instarface
         else :
             print(f"  {c}[{r}-{c}]{r}  command not found : {y}{op_intarface}")
 if __name__ == "__main__":
