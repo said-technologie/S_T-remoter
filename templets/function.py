@@ -40,13 +40,13 @@ class channel:
 
 def status():
     git_repo = requestes.get("https://github.com/said-technologie/S_T-remoter/blob/main/version.txt").status_code
-    if git_repo = 200:
+    if git_repo == 200:
         print(f" {c}[{g}+{c} {v} internet status {r}>> {y}Online")
     else:
         print(f" {c}[{r}!{c} {v} internet status {r}>> {y}Ofline")
 def git_repo():
     git_repo = requestes.get("https://github.com/said-technologie/S_T-remoter/blob/main/version.txt").status_code
-    if git_repo = 200:
+    if git_repo == 200:
         github_ver = git_repo.text
 		github_ver = github_ver.strip()
 
