@@ -38,7 +38,7 @@ class channel:
     def facebook_W_M():
         webbrowser.open("https://www.facebook.com/Said_technologie-111339843954624")
 
-def version():
+def status():
     git_repo = requestes.get("https://github.com/said-technologie/S_T-remoter/blob/main/version.txt").status_code
     if git_repo = 200:
         print(f" {c}[{g}+{c} {v} internet status {r}>> {y}Online")
