@@ -48,12 +48,11 @@ def git_repo():
     git_repo = requestes.get("https://github.com/said-technologie/S_T-remoter/blob/main/version.txt").status_code
     if git_repo == 200:
         github_ver = git_repo.text
-		github_ver = github_ver.strip()
-
-		if version == github_ver:
-			print(f" {c}[{g}+{c} {v} there is no available updates")
-		else:
-			print(f" {c}[{g}+{c} {v} there is an available update")
+	github_ver = github_ver.strip()
+	if version == github_ver:
+		print(f" {c}[{g}+{c} {v} there is no available updates")
 	else:
-		print(f" {c}[{r}!{c} {y} you need to connect to the internet to cheeke the update")
+		print(f" {c}[{g}+{c} {v} there is an available update")
+    else:
+	print(f" {c}[{r}!{c} {y} you need to connect to the internet to cheeke the update")
         
