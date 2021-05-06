@@ -8,7 +8,8 @@ v = "\033[35m"
 y = "\033[33m"
 r = "\033[31m"
 none = "\033[38m"
-
+#version of the tool
+version = "1.0"
 #importing the modules
 
 import os , sys , time
@@ -36,3 +37,23 @@ class channel:
         os.system("xdg-open https://www.facebook.com/Said_technologie-111339843954624")
     def facebook_W_M():
         webbrowser.open("https://www.facebook.com/Said_technologie-111339843954624")
+
+def version():
+    git_repo = requestes.get("https://github.com/said-technologie/S_T-remoter/blob/main/version.txt").status_code
+    if git_repo = 200:
+        print(f" {c}[{g}+{c} {v} internet status {r}>> {y}Online")
+    else:
+        print(f" {c}[{r}!{c} {v} internet status {r}>> {y}Ofline")
+def git_repo():
+    git_repo = requestes.get("https://github.com/said-technologie/S_T-remoter/blob/main/version.txt").status_code
+    if git_repo = 200:
+        github_ver = git_repo.text
+		github_ver = github_ver.strip()
+
+		if version == github_ver:
+			print(f" {c}[{g}+{c} {v} there is no available updates")
+		else:
+			print(f" {c}[{g}+{c} {v} there is an available update")
+	else:
+		print(f" {c}[{r}!{c} {y} you need to connect to the internet to cheeke the update")
+        
