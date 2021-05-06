@@ -66,8 +66,14 @@ def S_T():
             channel.facebook_W_M()
         elif op_intarface == "cre_channel -c Facebook -o Mac":
             channel.facebook_W_M()
+        #cheke the statu of the user
+        elif op_intarface == "get status":
+            status()
+        #cheke for update
+        elif op_intarface == "update":
+            git_repo()
         #cheking if the len of intup is 0
-        elif len(op_intarface) == 0:
+        elif len(op_intarface) >0:
             return op_instarface
         else :
             print(f"  {c}[{r}-{c}]{r}  command not found : {y}{op_intarface}")
