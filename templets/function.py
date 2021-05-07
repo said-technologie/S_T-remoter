@@ -54,6 +54,11 @@ def git_repo():
             print(f" {c}[{g}+{c} {v} there is no available updates")
         else:
             print(f" {c}[{g}+{c} {v} there is an available update")
+            up_cheke = input(f" {c}[{y}?{c}] {y}do you want to update {g}y{v}/{r}n{y} : ")
+            if up_cheke == "y":
+                os.system("git pull > cache/updtae.txt")
+                print(f" {c}[{g}+{c}] {g}repo have ben updated")
+                print(f" {c}[{g}+{c}] {g}restart the toll to commit the changes")
+                sys.exit()
     else:
         print(f" {c}[{r}!{c} {y} you need to connect to the internet to cheeke the update")
-        
