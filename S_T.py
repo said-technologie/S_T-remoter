@@ -74,7 +74,7 @@ def S_T():
             git_repo()
         #cheking if the len of intup is 0
         elif len(op_intarface) >0:
-            pass
+            op_intarface
         else :
             print(f"  {c}[{r}-{c}]{r}  command not found : {y}{op_intarface}")
 if __name__ == "__main__":
