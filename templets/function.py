@@ -18,13 +18,15 @@ import requests
 #def functions
 
 def help_menu():
-    print(f"    {r} commands                    {c} description                                            {g}example")
-    print(f"    {y}   help          {g}>>{r}   [{v}       it will show this help menu                  {r}]")
-    print(f"    {y}   clear         {g}>>{r}   [{v}        it will clear the terminal                  {r}]")
-    print(f"    {y}   exit          {g}>>{r}   [{v}          use it to exit the tool                   {r}]")
-    print(f"    {y}   usage         {g}>>{r}   [{v} it will show how you can the commands of te toll   {r}]{y}              usage {g}<start server>{g}")
-    print(f"    {y}   start server  {g}>>{r}   [{v}     it will start a server for the malware         {r}]")
-    print(f"    {y}   cre_channel   {g}>>{r}   [{v} it will show you the creator of this tool channels {r}]{y}              cre_channel {r}-c {g}<Github , Youtube , Facebook>{r} -o {g} <Termux , Linux , Windows , Mac>")
+    print(f"    {r} commands                    {c} description                                                   {g}example")
+    print(f"    {y}   help          {g}>>{r}   [{v}       it will show this help menu                         {r}]")
+    print(f"    {y}   clear         {g}>>{r}   [{v}        it will clear the terminal                         {r}]")
+    print(f"    {y}   exit          {g}>>{r}   [{v}          use it to exit the tool                          {r}]")
+    print(f"    {y}   usage         {g}>>{r}   [{v} it will show how you can the commands of te toll          {r}]{y}            usage {g}<start server>{g}")
+    print(f"    {y}   update        {g}>>{r}   [{v}            it will update the toll                        {r}]")
+    print(f"    {y}   get status    {g}>>{r}   [{v} it will cheke if you are connected to the internet ro not {r}]")
+    print(f"    {y}   start server  {g}>>{r}   [{v}     it will start a server for the malware                {r}]")
+    print(f"    {y}   cre_channel   {g}>>{r}   [{v} it will show you the creator of this tool channels        {r}]{y}            cre_channel {r}-c {g}<Github , Youtube , Facebook>{r} -o {g} <Termux , Linux , Windows , Mac>")
 class channel:
     def youtube_T_L():
         os.system("xdg-open https://www.youtube.com/channel/UCfD0KLgqBqvUzJsTGwqG1vQ")

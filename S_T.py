@@ -9,7 +9,7 @@ from templets.module_cheeke.module import modules_cheke
 import os, sys, time
 from templets.banner.banner import *
 from templets.function import *
-from colorama import *
+from tips.tip import *
 #seting the colors variables
 
 g = "\033[32m"
@@ -29,6 +29,7 @@ def S_T():
     os.system("clear")
     time.sleep(2)
     interface_banner()
+    tips()
     while True:
         op_intarface = input(f"{r}#{y}S_T-remoter{r}>> {g}")
         if op_intarface == "exit":
