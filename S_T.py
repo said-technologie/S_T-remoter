@@ -3,7 +3,7 @@
 #cheking the modules 
 from templets.module_cheeke.module import modules_cheke
 
-modules_cheke()
+#modules_cheke()
 #importing the needing modules
 
 import os, sys, time
@@ -74,7 +74,7 @@ def S_T():
             git_repo()
         #cheking if the len of intup is 0
         elif len(op_intarface) >0:
-            return op_instarface
+            pass
         else :
             print(f"  {c}[{r}-{c}]{r}  command not found : {y}{op_intarface}")
 if __name__ == "__main__":

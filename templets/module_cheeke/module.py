@@ -3,7 +3,7 @@
 import sys , time
 #cheking the modules
 
-modules = ["socket","colorama","threading","queue"]
+modules = ["socket","webbrowser","threading","queue","requests"]
 
 def modules_cheke():
 	print("\033[35m  ["+"\033[31m!"+"\033[35m]"+"\033[33m  cheking the modules...")

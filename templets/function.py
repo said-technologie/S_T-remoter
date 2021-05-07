@@ -14,6 +14,7 @@ version = "1.0"
 
 import os , sys , time
 from webbrowser import open
+import requests
 #def functions
 
 def help_menu():
@@ -39,20 +40,20 @@ class channel:
         webbrowser.open("https://www.facebook.com/Said_technologie-111339843954624")
 
 def status():
-    git_repo = requestes.get("https://github.com/said-technologie/S_T-remoter/blob/main/version.txt").status_code
+    git_repo = requests.get("https://github.com/said-technologie/S_T-remoter/blob/main/version.txt").status_code
     if git_repo == 200:
-        print(f" {c}[{g}+{c} {v} internet status {r}>> {y}Online")
+        print(f" {c}[{g}+{c}] {v} internet status {r}>> {g}Online")
     else:
-        print(f" {c}[{r}!{c} {v} internet status {r}>> {y}Ofline")
+        print(f" {c}[{r}!{c}] {v} internet status {r}>> {y}Ofline")
 def git_repo():
-    git_repo = requestes.get("https://github.com/said-technologie/S_T-remoter/blob/main/version.txt").status_code
+    git_repo = requests.get("https://github.com/said-technologie/S_T-remoter/blob/main/version.txt").status_code
     if git_repo == 200:
-        github_ver = git_repo.text
-	github_ver = github_ver.strip()
-	if version == github_ver:
-		print(f" {c}[{g}+{c} {v} there is no available updates")
-	else:
-		print(f" {c}[{g}+{c} {v} there is an available update")
+        github_ver = git_repo.text()
+        github_ver = github_ver.strip()
+        if version == github_ver:
+            print(f" {c}[{g}+{c} {v} there is no available updates")
+        else:
+            print(f" {c}[{g}+{c} {v} there is an available update")
     else:
-	print(f" {c}[{r}!{c} {y} you need to connect to the internet to cheeke the update")
+        print(f" {c}[{r}!{c} {y} you need to connect to the internet to cheeke the update")
         
