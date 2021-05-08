@@ -91,4 +91,3 @@ class usage:
         print(f"                 {c}[{g}+{c}] {g}server started{none}")
         print(f"     {g}Tips{r}:{v} after you do that type {y}help{v} to show an auther help menu")
     #def usage_cre_channel():
-
