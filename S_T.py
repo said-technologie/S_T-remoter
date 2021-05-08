@@ -1,9 +1,11 @@
 #this is the main of the tools 
 #S_T v1.0
 #cheking the modules 
-from templets.module_cheeke.module import modules_cheke
-
-#modules_cheke()
+from templets.module_cheeke.module import modules_check
+#chcking the modules
+modules_check()
+#checking if user have ben install ngrok
+#ngrok_check()
 #importing the needing modules
 
 import os, sys, time
@@ -33,14 +35,14 @@ def S_T():
     while True:
         op_intarface = input(f"{r}#{y}S_T-remoter{r}>> {g}")
         if op_intarface == "exit":
-            print(f"{v}  [{r}!{v}] {y}exiting...")
+            print(f"{v}  [{r}!{v}] {y}exiting...{none}")
             time.sleep(3)
             sys.exit()
         elif op_intarface == "clear":
             os.system("clear")
         elif op_intarface == "help":
             help_menu()
-        #cheking teh cre_channel options Github
+        #checking teh cre_channel options Github
         elif op_intarface == "cre_channel -c Github -o Termux":
             channel.github_T_L()
         elif op_intarface == "cre_channel -c Github -o Linux":
@@ -49,7 +51,7 @@ def S_T():
             channel.github_W_M()
         elif op_intarface == "cre_channel -c Github -o Mac":
             channel.github_W_M()
-        #cheking teh cre_channel options Youtube
+        #checking teh cre_channel options Youtube
         elif op_intarface == "cre_channel -c Youtube -o Termux":
             channel.youtube_T_L()
         elif op_intarface == "cre_channel -c Youtube -o Linux":
@@ -58,7 +60,7 @@ def S_T():
             channel.youtube_W_M()
         elif op_intarface == "cre_channel -c Youtube -o Mac":
             channel.youtube_W_M()
-        #cheking teh cre_channel options Facebook
+        #checking the cre_channel options Facebook
         elif op_intarface == "cre_channel -c Facebook -o Termux":
             channel.facebook_T_L()
         elif op_intarface == "cre_channel -c Facebook -o Linux":
@@ -67,15 +69,19 @@ def S_T():
             channel.facebook_W_M()
         elif op_intarface == "cre_channel -c Facebook -o Mac":
             channel.facebook_W_M()
-        #cheke the statu of the user
+        #check the statu of the user
         elif op_intarface == "get status":
             status()
-        #cheke for update
+        #check for update
         elif op_intarface == "update":
             git_repo()
-        #cheking if the len of intup is 0
-        elif len(op_intarface) >0:
-            op_intarface
+        #the usage command
+        elif op_intarface == "usage get status":
+            usage.usage_get_status()
+        elif op_intarface == "usage start server":
+            usage.usage_start_server()
+        #elif op_intarface == "usage cre_channel":
+            #usage.usage_cre_channel()
         else :
             print(f"  {c}[{r}-{c}]{r}  command not found : {y}{op_intarface}")
 if __name__ == "__main__":
