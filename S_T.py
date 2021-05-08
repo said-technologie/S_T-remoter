@@ -1,7 +1,7 @@
 #this is the main of the tools 
 #S_T v1.0
 #cheking the modules 
-from templets.module_cheeke.module import modules_check
+from templets.module_cheeke.module import modules_check , ngrok_check
 #chcking the modules
 modules_check()
 #checking if user have ben install ngrok
@@ -69,7 +69,7 @@ def S_T():
             channel.facebook_W_M()
         elif op_intarface == "cre_channel -c Facebook -o Mac":
             channel.facebook_W_M()
-        #check the statu of the user
+        #check the status of the user
         elif op_intarface == "get status":
             status()
         #check for update
@@ -80,8 +80,8 @@ def S_T():
             usage.usage_get_status()
         elif op_intarface == "usage start server":
             usage.usage_start_server()
-        #elif op_intarface == "usage cre_channel":
-            #usage.usage_cre_channel()
+        elif op_intarface == "usage cre_channel":
+            usage.usage_cre_channel()
         else :
             print(f"  {c}[{r}-{c}]{r}  command not found : {y}{op_intarface}")
 if __name__ == "__main__":

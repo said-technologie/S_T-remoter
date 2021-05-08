@@ -65,7 +65,7 @@ def git_repo():
                 sys.exit()
     else:
         print(f" {c}[{r}!{c} {y} you need to connect to the internet to cheeke the update")
-
+#building a class for all the usage command
 class usage:
     #usage for get status command
     def usage_get_status():
@@ -90,4 +90,41 @@ class usage:
         print(f"                 {c}[{y}!{c}] {g}starting a sever...{none}")
         print(f"                 {c}[{g}+{c}] {g}server started{none}")
         print(f"     {g}Tips{r}:{v} after you do that type {y}help{v} to show an auther help menu")
-    #def usage_cre_channel():
+    def usage_cre_channel():
+        print(f"        {v}Usage {g}cre_channel {r}:{none}")
+        print(f"            {v} this command {r}'{g}cre_channel{r}'{v} will alaws you to see all my channls and even open it on a browser{v}{none}")
+        print(f"                             {g}please {y}subscribe{g} to my {y} Youtube{g} channel")
+        print(f"        {y} Example {g}for Linux{r}:{none}")
+        print(f"             {c} input{r} :{none}")
+        print(f"                    {y}1{r}-{v} Youtube{none}")
+        print(f"                          {g}cre_channel -c Youtube -o Linux")
+        print(f"                    {y}2{r}-{v} Github{none}")
+        print(f"                          {g}cre_channel -c Github -o Linux")
+        print(f"                    {y}3{r}-{v} Facebook{none}")
+        print(f"                          {g}cre_channel -c Facebook -o Linux")
+        print(f"        {y} Example {g}for Termux{r}:{none}")
+        print(f"             {c} input{r} :{none}")
+        print(f"                    {y}1{r}-{v} Youtube{none}")
+        print(f"                          {g}cre_channel -c Youtube -o Termux")
+        print(f"                    {y}2{r}-{v} Github{none}")
+        print(f"                          {g}cre_channel -c Github -o Termux")
+        print(f"                    {y}3{r}-{v} Facebook{none}")
+        print(f"                          {g}cre_channel -c Facebook -o Termux")
+        print(f"        {y} Example {g}for Windows{r}:{none}")
+        print(f"             {c} input{r} :{none}")
+        print(f"                    {y}1{r}-{v} Youtube{none}")
+        print(f"                          {g}cre_channel -c Youtube -o Windows")
+        print(f"                    {y}2{r}-{v} Github{none}")
+        print(f"                          {g}cre_channel -c Github -o Windows")
+        print(f"                    {y}3{r}-{v} Facebook{none}")
+        print(f"                          {g}cre_channel -c Facebook -o Windows")
+        print(f"        {y} Example {g}for Mac{r}:{none}")
+        print(f"             {c} input{r} :{none}")
+        print(f"                    {y}1{r}-{v} Youtube{none}")
+        print(f"                          {g}cre_channel -c Youtube -o Mac")
+        print(f"                    {y}2{r}-{v} Github{none}")
+        print(f"                          {g}cre_channel -c Github -o Mac")
+        print(f"                    {y}3{r}-{v} Facebook{none}")
+        print(f"                          {g}cre_channel -c Facebook -o Mac")
+        print(f"             {c} output{r} :{none}")
+        print(f"                         {v}it will open my {y}channels")
