@@ -14,6 +14,7 @@ version = "1.0"
 
 import os , sys , time
 import requests
+from webbrowser import *
 '''def functions'''
 
 def help_menu():
@@ -64,8 +65,7 @@ class exploit_payload:
 '''making the cre_channel option'''
 
 class channel:
-    from webbrowser import *
-    def youtube_T_L():
+        def youtube_T_L():
         os.system("xdg-open https://www.youtube.com/channel/UCfD0KLgqBqvUzJsTGwqG1vQ")
     def youtube_W_M():
         webbrowser.open("https://www.youtube.com/channel/UCfD0KLgqBqvUzJsTGwqG1vQ")

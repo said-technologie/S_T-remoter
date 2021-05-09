@@ -12,6 +12,7 @@ import os, sys, time
 from templets.banner.banner import *
 from templets.function import *
 from tips.tip import *
+from server_host.session import *
 #seting the colors variables
 
 g = "\033[32m"
@@ -91,6 +92,9 @@ def S_T():
         #exploit-payload option for Windows
         elif op_intarface == "exploit-payload Windows":
             exploit_payload.exploit_payload_Windows()
+        #start a server option
+        elif op_intarface == "start server":
+            reverse_shell_exec()
         else :
             print(f"  {c}[{r}-{c}]{r}  command not found : {y}{op_intarface}")
 if __name__ == "__main__":

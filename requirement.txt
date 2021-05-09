@@ -3,3 +3,4 @@ socket
 threading
 queue
 shutil
+tabulate
