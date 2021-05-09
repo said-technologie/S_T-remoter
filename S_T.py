@@ -19,7 +19,7 @@ c = "\033[36m"
 v = "\033[35m"
 y = "\033[33m"
 r = "\033[31m"
-none = "\033[38m"
+none = "\033[0m"
 #building the user intarface
 
 def S_T():
@@ -82,6 +82,15 @@ def S_T():
             usage.usage_start_server()
         elif op_intarface == "usage cre_channel":
             usage.usage_cre_channel()
+        #exploit-payload option for linux
+        elif op_intarface == "exploit-payload Linux":
+            exploit_payload.exploit_payload_Linux()
+        #exploit-payload option for Termux
+        elif op_intarface == "exploit-payload Termux":
+            exploit_payload.exploit_payload_Termux()
+        #exploit-payload option for Windows
+        elif op_intarface == "exploit-payload Windows":
+            exploit_payload.exploit_payload_Windows()
         else :
             print(f"  {c}[{r}-{c}]{r}  command not found : {y}{op_intarface}")
 if __name__ == "__main__":

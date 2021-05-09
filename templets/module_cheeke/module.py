@@ -3,7 +3,7 @@
 
 import sys , time
 import shutil
-
+import platform
 #colors vriables
 
 g = "\033[32m"
@@ -36,12 +36,24 @@ def ngrok_check():
 		if pkgs == None:
 			install_ngrok = input(f" {c}[{r}!{c}] {y}could to find {g}ngrok{y} you need to download it {v}do you want to download it now{g}y{r}/{g}n {c}>> ")
 			if install_ngrok == "y":
-				print(f" {c}[{g}+{c}] {y}prepare to install...{none}")
-				time.sleep(2)
-				print(f" {c}[{y}!{c}] {r}  installing ngrok...{none}")
-				os.system("curl https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip >> cache/install.txt")
-				os.system("sudo apt-get install unzip -y >> cache/install.txt")
-				os.system("sudo unzip ")
+				if platform.system == "Linux":
+					if 'SUDO_UID' in os.environ.keys():
+						print(f" {c}[{g}+{c}] {y}prepare to install...{none}")
+						time.sleep(2)
+						print(f" {c}[{y}!{c}] {r}  installing ngrok...{none}")
+						os.system("curl https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip >> cache/install.txt")
+						os.system("sudo apt-get install unzip -y >> cache/install.txt")
+						os.system("sudo unzip ngrok-stable-linux-amd64.zip")
+					elif not 'SUDO_UID' in os.environ.keys():
+						print(f" {c}[{g}+{c}] {y}prepare to install...{none}")
+						time.sleep(2)
+						print(f" {c}[{y}!{c}] {r}  installing ngrok...{none}")
+						os.system("curl https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip >> cache/install.txt")
+						os.system("pkg install unzip -y >> cache/install.txt")
+						os.system("unzip ngrok-stable-linux-amd64.zip")
+				elif platform.system == "Windows":
+					print(f" {c}[{r}?{c}] {r}this tool dosn't suporte windows os")
+					sys.exit()
 			elif install_ngrok == "n":
 				pass
 			else:
