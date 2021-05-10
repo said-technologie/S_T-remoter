@@ -2,8 +2,7 @@
 #S_T v1.0
 #cheking the modules 
 from templets.module_cheeke.module import modules_check , ngrok_check
-#chcking the modules
-modules_check()
+
 #checking if user have ben install ngrok
 #ngrok_check()
 #importing the needing modules
@@ -25,7 +24,10 @@ none = "\033[0m"
 
 def S_T():
     os.system("clear")
+    '''checking the modules'''
+    modules_check()
     print(f"{c}  [{g}   OK   {c}] {g} all the module are founds")
+    os.system("clear")
     time.sleep(2)
     print(f"{v}  [{g}+{v}]{g}  starting ...{none}")
     time.sleep(2)

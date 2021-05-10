@@ -13,7 +13,7 @@ import threading
 import queue
 import sys , os , time 
 from S_T import *
-from tool import *
+from tool import help_menu
 '''setting the variabeles'''
 NUMBER_OF_THREAD = 2
 JOB_NUMBER = [1 , 2]
