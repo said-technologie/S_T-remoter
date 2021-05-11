@@ -11,17 +11,17 @@ none = "\033[0m"
 import socket
 import threading
 import queue
-import sys , os , time 
-from S_T import *
-from tool import help_menu
+import sys , os , time
+from tabulate import *
+#from tool import help_menu
 '''setting the variabeles'''
 NUMBER_OF_THREAD = 2
 JOB_NUMBER = [1 , 2]
-queue = Queue()
+queue = queue.Queue()
 all_connection = []
 address_connection = []
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-host = s.gethostbyname(s.gethostname())
+host = socket.gethostbyname(socket.gethostname())
 port = 5050
 ''' setting a socket creating'''
 def connection_info():
@@ -30,23 +30,21 @@ def connection_info():
 		global port 
 		global s
 	except s.error as error:
-		print(f"  {c}[{y}!{c}] {y}there was an error in creating a socket {v}>> {r}{error}")
+		print(f"\n  {c}[{y}!{c}] {y}there was an error in creating a socket {v}>> {r}{error}")
 '''binding the conection'''
 def connection_bind():
 	try:
 		global host 
 		global port
 		global s
-		print(f"  {c}[{g}+{c}] {v}binding connection to the port {r}>> {y}{port}")
-		time.sleep(2)
+		print(f"\n  {c}[{g}+{c}] {v}binding connection to the port {r}>> {y}{port}")
 		s.bind((host , port))
 		s.listen(5)
-		print(f"  {c}[{g}!{c}] {g}binding was completed")
-	except s.error as error:
+		print(f"\n  {c}[{g}!{c}] {g}binding was completed")
+	except socket.error as error:
 		print(f"  {c}[{r}-{c}] {y}Binding error {v}>> {r}{error}")
-		time.sleep(2)
+		time.sleep(1)
 		print(f"  {c}[{r}!{c}] {y}Retrying ...")
-		time.sleep(2)
 		return connection_bind()
 '''accepting the connections'''
 def conection_accept():
@@ -60,10 +58,10 @@ def conection_accept():
 			conn.setblocking(1)
 			all_connection.append(conn)
 			address_connection.append(address)
-			print(f"  {c}[{g}+{c}] {g}Connection have ben accepted {y}IP{r} :{v} {address[0:]} {y}PORT{r} :{v} {str(address[1:])}")
+			print(f"\n  {c}[{g}+{c}] {g}Connection have ben accepted {y}IP{r} :{v} {address[0:]} {y}PORT{r} :{v} {str(address[1:])}")
 			continue
 		except:
-			print(f"  {c}[{r}-{c}] {y}Faild to accept the connection")
+			print(f"\n  {c}[{r}-{c}] {y}Faild to accept the connection")
 '''creating a shell intarface'''
 def intarface():
 	while True:
@@ -71,7 +69,7 @@ def intarface():
 		if op_listen == "clear":
 			os.system("clear")
 		elif op_listen == "exit":
-			return S_T()
+			sys.exit()
 		elif op_listen == "show session":
 			session_list()
 		elif op_listen == "connect":

@@ -14,4 +14,3 @@ def tips():
     tips_list = [f"type {g}help {v}to show the help menu{none}",f"you can use the {g}usage {v}command to find same info about auther commands{none}",f"{v}you can check your internet connection by typing {g}get status{none}"]
     ran_print = random.choice(tips_list)
     print(f" {g}                Tips {y}>> {v}{ran_print}{v}")
-tips()
