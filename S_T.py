@@ -1,7 +1,7 @@
 #this is the main of the tools 
 #S_T v1.0
 #cheking the modules 
-from templets.module_cheeke.module import modules_check , ngrok_check
+from templets.module_cheeke.module import modules_check
 '''checking the modules'''
 modules_check()
 '''checking if user have ben install ngrok'''
@@ -77,8 +77,7 @@ def S_T():
             exploit_payload.exploit_payload_Windows()
         #start a server option
         elif op_intarface == "start server":
-            if status() == True:
-                reverse_shell_exec()
+            reverse_shell_exec()
         else :
             print(f"  {c}[{r}-{c}]{r}  command not found : {y}{op_intarface}")
 if __name__ == "__main__":
