@@ -4,3 +4,4 @@ threading
 queue
 shutil
 tabulate
+tqdm

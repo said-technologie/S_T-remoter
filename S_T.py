@@ -66,15 +66,6 @@ def S_T():
             usage.usage_start_server()
         elif op_intarface == "usage cre_channel":
             usage.usage_cre_channel()
-        #exploit-payload option for linux
-        elif op_intarface == "exploit-payload Linux":
-            exploit_payload.exploit_payload_Linux()
-        #exploit-payload option for Termux
-        elif op_intarface == "exploit-payload Termux":
-            exploit_payload.exploit_payload_Termux()
-        #exploit-payload option for Windows
-        elif op_intarface == "exploit-payload Windows":
-            exploit_payload.exploit_payload_Windows()
         #start a server option
         elif op_intarface == "start server":
             reverse_shell_exec()

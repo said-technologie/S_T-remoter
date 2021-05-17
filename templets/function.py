@@ -16,55 +16,23 @@ import os , sys , time
 import requests
 from webbrowser import *
 import platform
+from tqdm import *
 '''def functions'''
 
 def help_menu():
     print(f"    {r} commands                    {c} description                                                   {g}example")
-    print(f"    {y}   help          {g}>>{r}   [{v}       it will show this help menu                         {r}]")
-    print(f"    {y}   clear         {g}>>{r}   [{v}        it will clear the terminal                         {r}]")
-    print(f"    {y}   exit          {g}>>{r}   [{v}          use it to exit the tool                          {r}]")
-    print(f"    {y}   usage         {g}>>{r}   [{v} it will show how you can the commands of te toll          {r}]{y}            usage {g}<start server>{g}")
-    print(f"    {y}   update        {g}>>{r}   [{v}            it will update the toll                        {r}]")
-    print(f"    {y}   get status    {g}>>{r}   [{v} it will check if you are connected to the internet ro not {r}]")
-    print(f"    {y}  exploit-payload{g}>>{r}   [{v}         it will creat a python malware                    {r}]{y}            exploit-payload {g}<Linux , Termux , Windows>{none} ")
-    print(f"    {y}   start server  {g}>>{r}   [{v}     it will start a server for the malware                {r}]")
-    print(f"    {y}   cre_channel   {g}>>{r}   [{v} it will show you the creator of this tool channels        {r}]{y}            cre_channel {r}-c {g}<Github , Youtube , Facebook>{r} -o {g} <Termux , Linux , Windows , Mac>")
-
-'''making a python payload that alaws the hacker to make a connection with his victim'''
-class exploit_payload:
-    '''exploit paylaod for Linux'''
-    def exploit_payload_Linux():
-        paylaod_name = input(f"{c}[{y}!{c}]  {v}enter {r}payload {v}name {r}: {g}")
-        time.sleep(2)
-        print(f"  {v}[{y}!{v}] {y}making the {r}payload{y} ...")
-        os.system(f"touch ../payloads/Linux/{paylaod_name}.py")
-        payload_file = open(f"../payloads/Linux/{paylaod_name}.py","w")
-        payload_file.write("")
-        payload_file.close()
-        print(f"  {c}[{g}+{c}] {g}payload saved to {y}/payloads/Linux/{paylaod_name}.py")
-    '''exploit paylaod for  Termux'''
-    def exploit_payload_Termux():
-        paylaod_name = input(f"{c}[{y}!{c}]  {v}enter {r}payload {v}name {r}: {g}")
-        time.sleep(2)
-        print(f"  {v}[{y}!{v}] {y}making the {r}payload{y} ...")
-        os.system(f"touch ../payloads/Linux/{paylaod_name}.py")
-        payload_file = open(f"../payloads/Termux/{paylaod_name}.py","w")
-        payload_file.write("")
-        payload_file.close()
-        print(f"  {c}[{g}+{c}] {g}payload saved to {y}/payloads/Termux/{paylaod_name}.py")
-    '''exploit paylaod for  Windows'''
-    def exploit_payload_Windows():
-        paylaod_name = input(f"{c}[{y}!{c}]  {v}enter {r}payload {v}name {r}: {g}")
-        time.sleep(2)
-        print(f"  {v}[{y}!{v}] {y}making the {r}payload{y} ...")
-        os.system(f"touch ../payloads/Linux/{paylaod_name}.py")
-        payload_file = open(f"../payloads/Windows/{paylaod_name}.py","w")
-        payload_file.write("")
-        payload_file.close()
-        print(f"  {c}[{g}+{c}] {g}payload saved to {y}/payloads/Windows/{paylaod_name}.py")
+    print(f"    {y}   help          {g}>>{r}   [{v}                 it will show this help menu                         {r}]")
+    print(f"    {y}   clear         {g}>>{r}   [{v}                  it will clear the terminal                         {r}]")
+    print(f"    {y}   exit          {g}>>{r}   [{v}                   use it to exit the tool                           {r}]")
+    print(f"    {y}   usage         {g}>>{r}   [{v}       it will show how you can the commands of te toll              {r}]{y}            usage {g}<start server>{g}")
+    print(f"    {y}   update        {g}>>{r}   [{v}                 it will update the toll                        	{r}]")
+    print(f"    {y}   get status    {g}>>{r}   [{v}   it will check if you are connected to the internet ro not 	{r}]")
+    print(f"    {y}  exploit-payload{g}>>{r}   [{v}              it will creat a python malware                    	{r}]{y}            exploit-payload {g}<Linux , Termux , Windows>{none} ")
+    print(f"    {y}   start server  {g}>>{r}   [{v}          it will start a server for the malware                	{r}]")
+    print(f"    {y}   cre_channel   {g}>>{r}   [{v} 	it will show you the creator of this tool channels        	{r}]{y}            cre_channel {r}-c {g}<Github , Youtube , Facebook>{r} -o {g} <Termux , Linux , Windows , Mac>")
+    print(f"    {y}   show payload  {g}>>{r}   [{v} it will show you all the available paylaod that you can creat       {r}]{y}            ")
 
 '''making the cre_channel option'''
-
 class channel:
         def youtube_T_L():
             if platform.system == "Linux":
@@ -179,3 +147,21 @@ class usage:
         print(f"                          {g}cre_channel -c Facebook -o Mac")
         print(f"             {c} output{r} :{none}")
         print(f"                         {v}it will open my {y}channels")
+
+'''making a python payload that alaws the hacker to make a connection with his victim'''
+class payload:
+    def Termux(op_intarface):
+        if op_intarface[2] == "screenshot_send_rsv":
+            payload_screenshot = open(f"payload/Termux/{op_intarface[4]}.py", "wb")
+            paylaod_write = payload_screenshot.write("")
+            progress = tqdm.tqdm(range(1000), f"{y}Generating payload {r}", unit="B", unit_scale=True, unit_divisor=1024)
+            progress.update(len(paylaod_write))
+            print(f"  {c}[{g}+{c}] {g}Done")
+            print(f"  {c}[{g}!{c}] {y}paylaod saved to {r}paylaod{v}/{r}Termux{v}/{r}{op_intarface[4]}.py")
+
+
+'''
+def start_srver():
+    try:
+       payload_check = open("payload/Termux/") 
+'''

