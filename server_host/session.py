@@ -33,7 +33,7 @@ def connection_info():
 		global port 
 		global s
 	except s.error as error:
-		print(f"\n  {c}[{y}!{c}] {y}there was an error in creating a socket {v}>> {r}{error}")
+		print(f"\n  {c}[{y}!{c}] {y}there was an error in creating a socket {v}>> {r}{error}{none}")
 '''binding the conection'''
 def connection_bind():
 	try:
