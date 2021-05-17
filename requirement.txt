@@ -1,5 +1,4 @@
 colorama
-socket
 threading
 queue
 shutil

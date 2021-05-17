@@ -28,6 +28,7 @@ while True:
         os.system("pip3 install -r requirement.txt >> cache/install.txt")
         print(f" {c}[{g}+{c}] {g}  Done{none}")
         print(f" {c}[{g}+{c}] {g}  type {y} python3 S_t.py {none}")
+        break
     elif op_check == "Linux":
         print(f" {c}[{g}+{c}] {y}prepare to install...{none}")
         time.sleep(2)
@@ -41,5 +42,6 @@ while True:
         os.system("pip3 install -r requirement.txt >> cache/install.txt")
         print(f" {c}[{g}+{c}] {g}  Done{none}")
         print(f" {c}[{g}+{c}] {g}  type {y} python3 S_t.py {none}")
+        break
     else :
         print(f" {c}[{r}!{c}] {y} you have to choose an os from {g} Termux {y}or {g}Linux")
