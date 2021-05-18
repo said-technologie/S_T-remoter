@@ -69,6 +69,8 @@ def S_T():
         #start a server option
         elif op_intarface == "start server":
             reverse_shell_exec()
+        elif op_intarface[0:] == "exploit-payload":
+            payload.Termux(op_intarface)
         else :
             print(f"  {c}[{r}-{c}]{r}  command not found : {y}{op_intarface}")
 if __name__ == "__main__":

