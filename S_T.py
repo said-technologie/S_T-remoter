@@ -58,7 +58,7 @@ def S_T():
             status()
         #check for update
         elif op_intarface == "update":
-            update()
+            git_repo()
         #the usage command
         elif op_intarface == "usage get status":
             usage.usage_get_status()
@@ -67,7 +67,7 @@ def S_T():
         elif op_intarface == "usage cre_channel":
             usage.usage_cre_channel()
         #start a server option
-        elif op_intarface == "start server":
+        elif op_intarface[0:11] == "start server":
             reverse_shell_exec()
         elif op_intarface[0:] == "exploit-payload":
             payload.Termux(op_intarface)

