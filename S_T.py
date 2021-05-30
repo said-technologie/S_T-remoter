@@ -67,8 +67,8 @@ def S_T():
         elif op_intarface == "usage cre_channel":
             usage.usage_cre_channel()
         #start a server option
-        elif op_intarface[0:11] == "start server":
-            reverse_shell_exec()
+        elif op_intarface == "start server":
+            start_server()
         elif op_intarface[0:] == "exploit-payload":
             payload.Termux(op_intarface)
         else :
